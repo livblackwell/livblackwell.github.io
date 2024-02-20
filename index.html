@@ -6,7 +6,7 @@
 <title>Scrolling Color Change</title>
 <style>
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     height: 2000px; /* Just for demonstration purpose to make the page scrollable */
@@ -30,7 +30,7 @@
 </head>
 <body>
 <div class="container">
-  <span class="text" id="changingText">This text will change color as you scroll hopefully!</span>
+  <span class="text" id="changingText">This text will change color as you scroll</span>
 </div>
 
 <script>
@@ -39,15 +39,23 @@
     const text = document.getElementById('changingText');
     const letters = text.textContent.split('');
     
+    text.textContent = ''; // Clear existing text content
+    
     letters.forEach((letter, index) => {
       const span = document.createElement('span');
       span.textContent = letter;
       span.style.transitionDelay = `${index * 50}ms`; // Adjust delay as needed
       
       // Change color based on scroll position
-      span.style.color = `hsl(${scrollPosition % 360}, 100%, 50%)`; 
+      const startColor = [255, 182, 193]; // Light pink color (RGB)
+      const endColor = [255, 0, 0]; // Red color (RGB)
+      const currentColor = startColor.map((channel, i) => {
+        const delta = (endColor[i] - channel) * (scrollPosition / 1000); // Adjust scroll speed as needed
+        return Math.round(channel + delta);
+      });
+      span.style.color = `rgb(${currentColor.join(',')})`;
       
-      text.replaceChild(span, text.children[index]);
+      text.appendChild(span);
     });
   });
 </script>
