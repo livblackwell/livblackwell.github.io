@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Hello! This took way too long to figure out </title>
+<title> Hello! </title>
 <style>
   body {
     font-family: helvetica;
@@ -29,7 +29,7 @@
 </head>
 <body>
 <div class="container">
-  <span class="text" id="changingText">This text will change color as you scroll</span>
+  <span class="text" id="changingText">This text will change color as you scroll, this took way too long to figure out </span>
 </div>
 
 <script>
@@ -45,6 +45,11 @@
       span.style.color = `hsl(${scrollPosition % 360}, 100%, 50%)`; // Change color based on scroll position
       text.replaceChild(span, text.children[index]);
     });
+    if (scrollPosition > 100) { // Change 100 to the desired scroll position
+        span.style.color = 'red'; // Change to the color you want after scrolling
+      } else {
+        span.style.color = 'black'; // Change to the color you want before scrolling
+      }
   });
 </script>
 </body>
