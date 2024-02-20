@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Hello! </title>
+<title>Scrolling Color Change</title>
 <style>
   body {
-    font-family: helvetica;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     height: 2000px; /* Just for demonstration purpose to make the page scrollable */
@@ -24,12 +24,13 @@
   .text {
     display: inline-block;
     transition: color 0.3s ease-in-out;
+    color: #ffb6c1; /* Starting color: light pink */
   }
 </style>
 </head>
 <body>
 <div class="container">
-  <span class="text" id="changingText">This text will change color as you scroll, this took way too long to figure out </span>
+  <span class="text" id="changingText">This text will change color as you scroll hopefully!</span>
 </div>
 
 <script>
@@ -42,14 +43,12 @@
       const span = document.createElement('span');
       span.textContent = letter;
       span.style.transitionDelay = `${index * 50}ms`; // Adjust delay as needed
-      span.style.color = `hsl(${scrollPosition % 360}, 100%, 50%)`; // Change color based on scroll position
+      
+      // Change color based on scroll position
+      span.style.color = `hsl(${scrollPosition % 360}, 100%, 50%)`; 
+      
       text.replaceChild(span, text.children[index]);
     });
-    if (scrollPosition > 100) { // Change 100 to the desired scroll position
-        span.style.color = 'red'; // Change to the color you want after scrolling
-      } else {
-        span.style.color = 'black'; // Change to the color you want before scrolling
-      }
   });
 </script>
 </body>
