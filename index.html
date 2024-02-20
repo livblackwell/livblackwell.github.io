@@ -1,1 +1,51 @@
-hello 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Hello! This took way too long to figure out </title>
+<style>
+  body {
+    font-family: helvetica;
+    margin: 0;
+    padding: 0;
+    height: 2000px; /* Just for demonstration purpose to make the page scrollable */
+  }
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    overflow: hidden;
+  }
+  .text {
+    display: inline-block;
+    transition: color 0.3s ease-in-out;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <span class="text" id="changingText">This text will change color as you scroll</span>
+</div>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const text = document.getElementById('changingText');
+    const letters = text.textContent.split('');
+    
+    letters.forEach((letter, index) => {
+      const span = document.createElement('span');
+      span.textContent = letter;
+      span.style.transitionDelay = `${index * 50}ms`; // Adjust delay as needed
+      span.style.color = `hsl(${scrollPosition % 360}, 100%, 50%)`; // Change color based on scroll position
+      text.replaceChild(span, text.children[index]);
+    });
+  });
+</script>
+</body>
+</html>
