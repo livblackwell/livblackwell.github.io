@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hello!</title>
+<title>Scrolling Color Change</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20%;
     height: 2000px; /* Just for demonstration purpose to make the page scrollable */
   }
   .container {
@@ -30,12 +30,11 @@
 </head>
 <body>
 <div class="container">
-  <span class="text" id="changingText">This text will change color as you scrol hopefully!
+  <span class="text" id="changingText">This text will change color as you scroll hopefully! 
     Color and light refraction describe the phenomena where light bends upon entering a new medium, 
     such as glass or water, resulting in the separation of white light into its constituent colors. 
     This fundamental process is observed in prisms, rainbows, and various optical instruments, 
-    shaping our understanding of light behavior.
-    l</span>
+    shaping our understanding of light behavior.</span>
 </div>
 
 <script>
@@ -49,7 +48,7 @@
     letters.forEach((letter, index) => {
       const span = document.createElement('span');
       span.textContent = letter;
-      span.style.transitionDelay = `${index * 50}ms`; // Adjust delay as needed
+      span.style.transitionDelay = `${index * 0.1}s`; // Adjust delay as needed
       
       // Change color based on scroll position
       const startColor = [255, 182, 193]; // Light pink color (RGB)
